@@ -1,0 +1,14 @@
+<div class="ui link three stackable cards">
+    <a *ngFor="let product of products" (click)="gotoDetail(product)" [routerLink]="'/detail/'+ product.id"
+       class="ui card">
+        <div class="thumbnail">
+            <div class="cropper">
+                <img [src]="'http://smktesting.herokuapp.com/static/' + product.img" [alt]="product.title">
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">{{product.title}}</div>
+            <div class="description">{{product.text}}</div>
+        </div>
+    </a>
+</div>

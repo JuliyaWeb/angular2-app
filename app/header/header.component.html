@@ -1,0 +1,27 @@
+<header>
+    <div class="ui fixed inverted menu">
+        <div class="ui container">
+            <a routerLink="/" class="header item">
+                <img class="logo" src="/assets/images/logo.png">
+                <span>Test Project</span>
+            </a>
+            <a routerLink="/" class="item home">Home {{test1}}</a>
+            <div class="right item" *ngIf="!userService.loggedIn">
+                <a class="ui inverted button" (click)="openModal('login')">Log in</a>
+                <a class="ui inverted button" (click)="openModal('register')">Sign Up</a>
+            </div>
+
+            <div class="right item" *ngIf="userService.loggedIn">
+                <div class="ui animated inverted button" tabindex="0" (click)="userService.logout()">
+                    <div class="visible content">
+                        <i class="user icon"></i>
+                        <span>{{userService.currentUser.username}}</span>
+                    </div>
+                    <div class="hidden content">Logout</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <login></login>
+    <register></register>
+</header>

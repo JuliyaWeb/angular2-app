@@ -1,0 +1,46 @@
+<div class="ui small modal register">
+    <div class="header">
+        Register new account
+    </div>
+    <div class="inner-content">
+        <alert></alert>
+        <form class="ui large form" name="form" (ngSubmit)="registerf.form.valid && register(registerf);"
+              #registerf="ngForm"
+              novalidate>
+            <div class="field" [ngClass]="{ 'error': registerf.submitted && !userName.valid }">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" name="userName" [(ngModel)]="model.userName" #userName="ngModel"
+                           placeholder="Username" required>
+                    <div *ngIf="registerf.submitted && !userName.valid" class="help-block">Username is required</div>
+                </div>
+            </div>
+
+            <div class="field" [ngClass]="{ 'error': registerf.submitted && !password.valid }">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel"
+                           validateEqual="confirmPassword" reverse="true" required
+                           placeholder="Password">
+                    <div *ngIf="registerf.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+            </div>
+
+            <div class="field" [ngClass]="{ 'error': registerf.submitted && !confirmPassword.valid }">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="confirmPassword" [(ngModel)]="model.confirmPassword"
+                           #confirmPassword="ngModel" validateEqual="password" required
+                           placeholder="Password Confirmation">
+                    <div *ngIf="registerf.submitted && !confirmPassword.valid" class="help-block">
+                        Password does not match the confirm password.
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <button type="button" class="ui button" (click)="modalService.hide()">Close</button>
+                <button type="submit" class="ui teal submit button">Register</button>
+            </div>
+        </form>
+    </div>
+</div>

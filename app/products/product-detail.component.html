@@ -1,0 +1,68 @@
+<div class="ui grid stackable product-detail" *ngIf="product">
+    <div class="six wide column">
+        <div class="product-image center">
+            <img [src]="'http://smktesting.herokuapp.com/static/' + product.img" class="ui image centered"
+                 [alt]="product.title">
+        </div>
+    </div>
+    <div class="ten wide column">
+        <rating [(ngModel)]="countRate" [readonly]="true" [starSize]="'huge'"></rating>
+        <span class="count">({{reviews?.length}} customer reviews)</span>
+
+        <h1 class="title">{{product.title}}</h1>
+
+        <tabs>
+            <tab [tabTitle]="'Description'">
+                <h2>Product Description</h2>
+                <p>{{product.text}}</p>
+            </tab><!-- product-description -->
+
+            <tab [tabTitle]="'Reviews ('+ reviews?.length+ ')'">
+                <div class="ui comments">
+                    <div class="comment" *ngFor="let review of reviews">
+                        <a class="avatar">
+                            <img [src]="'assets/images/avatar.png'">
+                        </a>
+                        <div class="content">
+                            <span class="author">{{review.created_by.username}}</span>
+                            <div class="metadata">
+                                <div class="date">{{review.created_at | date}}</div>
+                                <rating [(ngModel)]="review.rate" [readonly]="true" [starSize]="'mini'"></rating>
+                            </div>
+                            <div class="text">
+                                <p>{{review.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- product-comments -->
+
+                <div class="ui info message" *ngIf="!userService.loggedIn">
+                    <div class="header">
+                        You must register before you can add review.
+                    </div>
+                    <p>Please <span (click)="modalService.open('login')">Login</span> or <span (click)="modalService.open('register')">Sing Up</span> for leave new Review</p>
+                </div>
+
+                <h4 *ngIf="reviews?.length == 0">There are no reviews of this product yet. Be the first!</h4>
+                <div class="newReview" *ngIf="userService.loggedIn">
+                    <alert></alert>
+                    <h2>Add review</h2>
+                    <div class="field-rate">
+                        <rating [(ngModel)]="currentRate"></rating>
+                        <span class="current-rate">Current Rate: <b>{{currentRate}}</b></span>
+                    </div>
+                    <form class="ui large form" (ngSubmit)="formReviw.form.valid && addReview(); formReviw.reset()"
+                          #formReviw='ngForm'
+                          novalidate>
+                        <div class="field" [ngClass]="{'has-error': formReviw.submitted && !newReview.valid }">
+                            <textarea name='newReview' [(ngModel)]='model.newReview' #newReview='ngModel' required
+                                      placeholder="Your review.." rows="4"></textarea>
+                        </div>
+                        <button class="ui fluid large teal submit button" [disabled]="!newReview.valid">Add Review
+                        </button>
+                    </form>
+                </div><!-- product-newReview -->
+            </tab>
+        </tabs>
+    </div>
+</div>

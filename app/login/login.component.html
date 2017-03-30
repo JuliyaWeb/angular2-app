@@ -1,0 +1,30 @@
+<div class="ui small modal login">
+    <div class="header">
+        Log-in to your account
+    </div>
+    <div class="inner-content">
+        <alert *ngIf="errorMassage"></alert>
+        <form class="ui large form" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login(loginForm)" novalidate>
+            <div class="field" [ngClass]="{ 'error': loginForm.submitted && !userName.valid }">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" name="userName" [(ngModel)]="model.userName" #userName="ngModel" placeholder="Username" required>
+                    <div *ngIf="loginForm.submitted && !userName.valid" class="help-block">Username is required</div>
+                </div>
+            </div>
+
+            <div class="field" [ngClass]="{ 'error': loginForm.submitted && !password.valid }">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required
+                           placeholder="Password">
+                    <div *ngIf="loginForm.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+            </div>
+            <div class="actions">
+                <button type="button" class="ui button" (click)="modalService.hide()">Close</button>
+                <button type="submit" class="ui teal button">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

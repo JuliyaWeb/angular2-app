@@ -1,0 +1,7 @@
+﻿<div class="ui" *ngIf="message"
+     [ngClass]="{ 'message': message, 'teal success': message.type === 'success', 'error': message.type === 'error' }">
+    <div class="header">
+        {{message.title}}
+    </div>
+    <p>{{message.text}}</p>
+</div>

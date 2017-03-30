@@ -1,0 +1,159 @@
+.wrapper {
+    min-height: 100%;
+    background: #f5f5f5;
+}
+
+.main {
+    padding: 100px 15px;
+}
+
+/*Header*/
+header .ui.menu:not(.vertical) .item>.button {
+    margin-left: 5px;
+}
+
+/*Products*/
+.card .thumbnail {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 75%;
+}
+
+.card .thumbnail .cropper {
+    overflow: hidden;
+    display: inline-block;
+    /*border: 1px solid red;*/
+}
+
+.card .thumbnail img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.card .header {
+    text-transform: capitalize;
+}
+
+.ui.modal>.inner-content {
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    line-height: 1.4;
+    padding-top: 1.5rem;
+    background: #fff;
+}
+
+.ui.modal>.inner-content .field {
+    padding: 0 50px;
+}
+
+.ui.modal>.inner-content .ui.message {
+    margin: 0 1.5rem 1.5rem;
+}
+
+.ui.modal>.inner-content .actions {
+    background: #f9fafb;
+    padding: 1rem 1rem;
+    border-top: 1px solid rgba(34,36,38,.15);
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.info.message span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ui.footer.segment {
+    border-radius: 0;
+    margin-top: 0;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.center {
+    text-align: center;
+}
+
+.form .ui.input {
+    display: block;
+    width: 100%;
+}
+
+.form.ui .field input {
+    width: 100% !important;
+}
+
+.form.ui .ui.icon.input > i.icon {
+    height: 42px;
+}
+
+.help-block {
+    color: #ad0000;
+    font-size: 12px;
+    display: block;
+}
+
+/*Detail Page Style*/
+.product-detail .title {
+    text-transform: uppercase;
+}
+
+.product-detail .ui.tabular.menu {
+    border-bottom: 0;
+}
+
+.product-detail .ui.attached.segment {
+    margin: 0;
+}
+
+.product-detail .ui.tabular.menu .item {
+    border-top: 3px solid transparent;
+}
+
+.product-detail .ui.tabular.menu .active.item {
+    border-top-color: #00b5ad;
+    border-top-width: initial;
+}
+
+.product-detail .count {
+    color: #666;
+    font-weight: bold;
+}
+
+.product-image {
+    background: #fff;
+}
+
+.meta {
+    margin: 10px 0;
+}
+
+.newReview form {
+    margin-top: 15px;
+}
+
+@media (max-width: 560px) {
+    .ui.menu:not(.vertical) .item.home,.ui.menu .right.item:before {
+        display: none;
+    }
+
+    header .ui.menu:not(.vertical) .item>.button {
+        font-size: 12px;
+    }
+
+    .ui.modal>.inner-content .field {
+        padding: 0 20px;
+    }
+
+}

@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# Deny source files
+<FilesMatch "^(\.gitignore|(package|tsconfig)\.json|.*\.ts)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
